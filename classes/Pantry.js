@@ -65,4 +65,6 @@ class Pantry {
   }
   // -END-- handler2 -- handler2 --END- //
 }
-module.exports = Pantry;
+if (typeof module !== 'undefined') {
+  module.exports = Pantry;
+}
