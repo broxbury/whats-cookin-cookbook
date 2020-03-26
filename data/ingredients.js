@@ -1233,6 +1233,5 @@ let ingredientsData = [
     "estimatedCostInCents": 613
   }
 ]
-module.exports
- =
-{ingredientsData}
+
+module.exports = {ingredientsData}
