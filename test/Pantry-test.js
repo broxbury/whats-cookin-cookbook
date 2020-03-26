@@ -161,7 +161,7 @@ describe('Pantry', function () {
         },
         {
           "ingredient": 20081,
-          "amount": 5
+          "amount": 1
         },
         {
           "ingredient": 11215,
@@ -207,7 +207,7 @@ describe('Pantry', function () {
       "name": "wheat flour",
       "cost": 142,
       "ingredient": 20081,
-      "amount": 5
+      "amount": 1
     }, {
       "name": "whole garlic clove",
       "cost": 220,
@@ -315,7 +315,8 @@ describe('Pantry', function () {
         quantity: {
           amount: 0.5,
           unit: 'tsp'
-        }
+        },
+        totalCostOfIngredient: 291
       },
       {
         name: 'sucrose',
@@ -323,7 +324,8 @@ describe('Pantry', function () {
         quantity: {
           amount: 0.5,
           unit: 'c'
-        }
+        },
+        totalCostOfIngredient: 451
       },
       {
         name: 'instant vanilla pudding',
@@ -331,7 +333,8 @@ describe('Pantry', function () {
         quantity: {
           amount: 3,
           unit: 'Tbsp'
-        }
+        },
+        totalCostOfIngredient: 1980
       },
       {
         name: 'brown sugar',
@@ -339,15 +342,17 @@ describe('Pantry', function () {
         quantity: {
           amount: 0.5,
           unit: 'c'
-        }
+        },
+        totalCostOfIngredient: 279.5
       },
       {
         name: 'fine sea salt',
         id: 1012047,
         quantity: {
-          amount: .24,
+          amount: 0.24,
           unit: 'servings'
-        }
+        },
+        totalCostOfIngredient: 126.72
       },
       {
         name: 'semi sweet chips',
@@ -355,7 +360,8 @@ describe('Pantry', function () {
         quantity: {
           amount: 2,
           unit: 'c'
-        }
+        },
+        totalCostOfIngredient: 506
       },
       {
         name: 'unsalted butter',
@@ -363,7 +369,8 @@ describe('Pantry', function () {
         quantity: {
           amount: 0.5,
           unit: 'c'
-        }
+        },
+        totalCostOfIngredient: 308.5
       },
       {
         name: 'vanilla',
@@ -371,7 +378,8 @@ describe('Pantry', function () {
         quantity: {
           amount: 0.5,
           unit: 'tsp'
-        }
+        },
+        totalCostOfIngredient: 463
       }
     ])
   });
@@ -514,7 +522,7 @@ describe('Pantry', function () {
       }
     ]
 
-    expect(pantry.getTotalCost(needThisStuff, allIngredients)).to.deep.equal(6600)
+    expect(pantry.getTotalCost(needThisStuff, allIngredients)).to.deep.equal(66.00)
   });
 
   it("Should return total cost of all missing items", function () {
@@ -553,7 +561,7 @@ describe('Pantry', function () {
       }
     ]
 
-    expect(pantry.createGroceryList(needThisStuff, 6600)).to.deep.equal({
+    expect(pantry.createGroceryList(needThisStuff, 66.00)).to.deep.equal({
       "ingredients": [{
           name: 'bicarbonate of soda',
           amountNeeded: 1
@@ -587,8 +595,114 @@ describe('Pantry', function () {
           amountNeeded: 1
         }
       ],
-      "totalCost": 6600
+      "totalCost": 66.00
     })
   });
 
+  it("Should return a grocery list of items, amounts and total cost", function () {
+
+    expect(pantry.verifyIngredients(recipe)).to.deep.equal({
+      "ingredients": [{
+          name: 'bicarbonate of soda',
+          amountNeeded: 1
+        },
+        {
+          name: 'sucrose',
+          amountNeeded: 1
+        },
+        {
+          name: 'instant vanilla pudding',
+          amountNeeded: 3
+        },
+        {
+          name: 'brown sugar',
+          amountNeeded: 1
+        },
+        {
+          name: 'fine sea salt',
+          amountNeeded: 1
+        },
+        {
+          name: 'semi sweet chips',
+          amountNeeded: 2
+        },
+        {
+          name: 'unsalted butter',
+          amountNeeded: 1
+        },
+        {
+          name: 'vanilla',
+          amountNeeded: 1
+        }
+      ],
+      "totalCost": 66.00
+    });
+  });
+
+  it("Should return list of ingredients we have but not enough of", function () {
+
+    let pantryNames = ['zucchini squash',
+      'flat leaf parsley leaves', 'kosher salt', 'wheat flour',
+      'whole garlic clove', "salt", "eggs"
+    ]
+
+    let recipeIngredientNames = ["wheat flour",
+      "bicarbonate of soda", "eggs", "sucrose", "instant vanilla pudding",
+      "brown sugar", "salt", "fine sea salt", "semi sweet chips",
+      "unsalted butter", "vanilla"
+    ]
+
+    pantry.checkCurrentIngredients(recipeIngredientNames, pantryNames, recipe)
+
+  });
+
+  it.only("Should return list of ingredients we have but not enough of", function () {
+
+    let x = {
+      ingredients: [{
+          name: 'bicarbonate of soda',
+          amountNeeded: 1
+        },
+        {
+          name: 'sucrose',
+          amountNeeded: 1
+        },
+        {
+          name: 'instant vanilla pudding',
+          amountNeeded: 3
+        },
+        {
+          name: 'brown sugar',
+          amountNeeded: 1
+        },
+        {
+          name: 'fine sea salt',
+          amountNeeded: 1
+        },
+        {
+          name: 'semi sweet chips',
+          amountNeeded: 2
+        },
+        {
+          name: 'unsalted butter',
+          amountNeeded: 1
+        },
+        {
+          name: 'vanilla',
+          amountNeeded: 1
+        }
+      ],
+      totalCost: 66
+    }
+    let y = {
+      ingredients: [{
+        name: 'wheat flour',
+        amountNeeded: 1
+      }],
+      totalCost: 1.42
+    }
+
+    pantry.combineGroceryLists(x, y)
+
+  });
 })
