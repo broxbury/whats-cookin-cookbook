@@ -41,8 +41,10 @@ class Recipe {
     return this.instructions
   }
 
-  returnNeededIngredients(userIngredients) {
-
-  }
+  // returnNeededIngredients(userIngredients) {
+  //
+  // }
 }
-module.exports = Recipe;
+if (typeof module !== 'undefined') {
+  module.exports = Recipe;
+}

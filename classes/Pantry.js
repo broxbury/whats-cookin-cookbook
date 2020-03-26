@@ -117,6 +117,7 @@ class Pantry {
     return groceryList
   }
 }
+
 // -END-- handler1 -- handler1 --END- //
 
 
@@ -137,4 +138,8 @@ class Pantry {
 //     recipe.ingredients.filter()
 //   }
 //   // -END-- handler2 -- handler2 --END- //
-module.exports = Pantry;
+
+  if (typeof module !== 'undefined') {
+  module.exports = Pantry;
+}
+
