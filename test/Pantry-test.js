@@ -758,7 +758,7 @@ describe('Pantry', function () {
     });
   });
 // finish
-  it.only("Should return Lets Cook!!!! All ingredients are found", function () {
+  it("Should return Lets Cook!!!! All ingredients are found", function () {
 
     let recipe = {
       "id": 595736,
@@ -909,7 +909,7 @@ describe('Pantry', function () {
     expect(pantry.verifyIngredients(recipe)).to.equal("Lets Cook!!!!")
   });
 // finish
-  it.only("Should", function () {
+  it("Should", function () {
 
     let recipe = {
       "id": 595736,
