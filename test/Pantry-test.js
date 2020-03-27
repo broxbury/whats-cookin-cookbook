@@ -180,6 +180,7 @@ describe('Pantry', function () {
     pantry = new Pantry(user);
 
   });
+
   it("Should be an instance of Pantry", function () {
     expect(pantry).to.be.an.instanceof(Pantry)
   });
@@ -259,11 +260,11 @@ describe('Pantry', function () {
 
   });
 
-  it("Should return an array of ingredients that is needed to complete the recipe", function () {
-
-    let pantryNames = ['zucchini squash',
-      'flat leaf parsley leaves', 'kosher salt', 'wheat flour',
-      'whole garlic clove', "salt", "eggs"
+  it("Should compare the two arrays of ingredient names in the pantry", function () {
+    let pantryNames = ["wheat flour",
+      "bicarbonate of soda", "eggs", "sucrose", "instant vanilla pudding",
+      "brown sugar", "salt", "fine sea salt", "semi sweet chips",
+      "unsalted butter", "vanilla"
     ]
 
     let recipeIngredientNames = ["wheat flour",
@@ -272,11 +273,7 @@ describe('Pantry', function () {
       "unsalted butter", "vanilla"
     ]
 
-    expect(pantry.returnMissingNames(recipeIngredientNames,
-      pantryNames)).to.deep.equal(["bicarbonate of soda", "sucrose",
-      "instant vanilla pudding", "brown sugar", "fine sea salt",
-      "semi sweet chips", "unsalted butter", "vanilla"
-    ])
+    expect(pantry.checkUserHasIngredients(recipeIngredientNames, pantryNames)).to.equal(true)
 
   });
 
@@ -310,11 +307,11 @@ describe('Pantry', function () {
     ]
 
     expect(pantry.getNeededIngredients(needThisStuff, recipe)).to.deep.equal([{
-        name: 'bicarbonate of soda',
-        id: 18372,
-        quantity: {
-          amount: 0.5,
-          unit: 'tsp'
+      name: 'bicarbonate of soda',
+      id: 18372,
+      quantity: {
+      amount: 0.5,  
+      unit: 'tsp'
         },
         totalCostOfIngredient: 291
       },
@@ -601,7 +598,18 @@ describe('Pantry', function () {
 
   it("Should return a grocery list of items, amounts and total cost", function () {
 
-    expect(pantry.verifyIngredients(recipe)).to.deep.equal({
+    let pantryNames = ['zucchini squash',
+      'flat leaf parsley leaves', 'kosher salt', 'wheat flour',
+      'whole garlic clove', "salt", "eggs"
+    ]
+
+    let recipeIngredientNames = ["wheat flour",
+      "bicarbonate of soda", "eggs", "sucrose", "instant vanilla pudding",
+      "brown sugar", "salt", "fine sea salt", "semi sweet chips",
+      "unsalted butter", "vanilla"
+    ]
+
+    expect(pantry.missingGroceryItems(recipeIngredientNames, pantryNames, recipe)).to.deep.equal({
       "ingredients": [{
           name: 'bicarbonate of soda',
           amountNeeded: 1
@@ -639,7 +647,7 @@ describe('Pantry', function () {
     });
   });
 
-  it("Should return list of ingredients we have but not enough of", function () {
+  it("Should return on object that we have but not enough of", function () {
 
     let pantryNames = ['zucchini squash',
       'flat leaf parsley leaves', 'kosher salt', 'wheat flour',
@@ -652,11 +660,16 @@ describe('Pantry', function () {
       "unsalted butter", "vanilla"
     ]
 
-    pantry.checkCurrentIngredients(recipeIngredientNames, pantryNames, recipe)
-
+    expect(pantry.checkCurrentIngredients(recipeIngredientNames, pantryNames, recipe)).to.deep.equal({
+      ingredients: [{
+        name: 'wheat flour',
+        amountNeeded: 1
+      }],
+      totalCost: 1.42
+    })
   });
 
-  it.only("Should return list of ingredients we have but not enough of", function () {
+  it("Should return the an object with a combination of all properties that match", function () {
 
     let x = {
       ingredients: [{
@@ -702,7 +715,371 @@ describe('Pantry', function () {
       totalCost: 1.42
     }
 
-    pantry.combineGroceryLists(x, y)
+    expect(pantry.combineGroceryLists(x, y)).to.deep.equal({
+      name: 'Grocery List',
+      ingredients: [{
+          name: 'bicarbonate of soda',
+          amountNeeded: 1
+        },
+        {
+          name: 'sucrose',
+          amountNeeded: 1
+        },
+        {
+          name: 'instant vanilla pudding',
+          amountNeeded: 3
+        },
+        {
+          name: 'brown sugar',
+          amountNeeded: 1
+        },
+        {
+          name: 'fine sea salt',
+          amountNeeded: 1
+        },
+        {
+          name: 'semi sweet chips',
+          amountNeeded: 2
+        },
+        {
+          name: 'unsalted butter',
+          amountNeeded: 1
+        },
+        {
+          name: 'vanilla',
+          amountNeeded: 1
+        },
+        {
+          name: 'wheat flour',
+          amountNeeded: 1
+        }
+      ],
+      totalCost: 67.42
+    });
+  });
+// finish
+  it.only("Should return Lets Cook!!!! All ingredients are found", function () {
+
+    let recipe = {
+      "id": 595736,
+      "image": "https://spoonacular.com/recipeImages/595736-556x370.jpg",
+      "ingredients": [{
+          "name": "wheat flour",
+          "id": 20081,
+          "quantity": {
+            "amount": 1.5,
+            "unit": "c"
+          }
+        },
+        {
+          "name": "eggs",
+          "id": 1123,
+          "quantity": {
+            "amount": 1,
+            "unit": "large"
+          }
+        },
+        {
+          "name": "salt",
+          "id": 2047,
+          "quantity": {
+            "amount": 0.5,
+            "unit": "tsp"
+          }
+        },
+        {
+          "name": "zucchini squash",
+          "id": 11477,
+          "quantity": {
+            "amount": 2,
+            "unit": ""
+          }
+        },
+        {
+          "name": "flat leaf parsley leaves",
+          "id": 11297,
+          "quantity": {
+            "amount": 0.25,
+            "unit": "cup"
+          }
+        },
+        {
+          "name": "kosher salt",
+          "id": 1082047,
+          "quantity": {
+            "amount": 0.25,
+            "unit": "teaspoon"
+          }
+        },
+        {
+          "name": "whole garlic clove",
+          "id": 11215,
+          "quantity": {
+            "amount": 1,
+            "unit": "clove"
+          }
+        }
+      ],
+      "instructions": [{
+          "instruction": "In a large mixing bowl, whisk together the dry ingredients (flour, pudding mix, soda and salt). Set aside.In a large mixing bowl of a stand mixer, cream butter for 30 seconds. Gradually add granulated sugar and brown sugar and cream until light and fluffy.",
+          "number": 1
+        },
+        {
+          "instruction": "Add egg and vanilla and mix until combined.",
+          "number": 2
+        },
+        {
+          "instruction": "Add dry ingredients and mix on low just until incorporated. Stir in chocolate chips.Scoop the dough into 1,5 tablespoon size balls and place on a plate or sheet. Cover with saran wrap and chill at least 2 hours or overnight.When ready to bake, preheat oven to 350 degrees.",
+          "number": 3
+        },
+        {
+          "instruction": "Place the cookie dough balls into ungreased muffin pan. Sprinkle with sea salt.",
+          "number": 4
+        },
+        {
+          "instruction": "Bake for 9 to 10 minutes, or until you see the edges start to brown.",
+          "number": 5
+        },
+        {
+          "instruction": "Remove the pan from the oven and let sit for 10 minutes before removing onto a cooling rack.Top with ice cream and a drizzle of chocolate sauce.",
+          "number": 6
+        }
+      ],
+      "name": "Loaded Chocolate Chip Pudding Cookie Cups",
+      "tags": [
+        "antipasti",
+        "starter",
+        "snack",
+        "appetizer",
+        "antipasto",
+        "hor d'oeuvre"
+      ]
+    }
+
+    let user = {
+      "name": "Saige O'Kon",
+      "id": 1,
+      "pantry": [{
+          ingredient: 11477,
+          amount: 4,
+          name: 'zucchini squash',
+          cost: 742
+        },
+        {
+          ingredient: 11297,
+          amount: 4,
+          name: 'flat leaf parsley leaves',
+          cost: 1030
+        },
+        {
+          ingredient: 1082047,
+          amount: 10,
+          name: 'kosher salt',
+          cost: 972
+        },
+        {
+          ingredient: 20081,
+          amount: 5,
+          name: 'wheat flour',
+          cost: 142
+        },
+        {
+          ingredient: 11215,
+          amount: 5,
+          name: 'whole garlic clove',
+          cost: 220
+        },
+        {
+          ingredient: 2047,
+          amount: 6,
+          name: 'salt',
+          cost: 280
+        },
+        {
+          ingredient: 1123,
+          amount: 8,
+          name: 'eggs',
+          cost: 472
+        }
+      ]
+    }
+
+    let pantry = new Pantry(user);
+
+    expect(pantry.verifyIngredients(recipe)).to.equal("Lets Cook!!!!")
+  });
+// finish
+  it.only("Should", function () {
+
+    let recipe = {
+      "id": 595736,
+      "image": "https://spoonacular.com/recipeImages/595736-556x370.jpg",
+      "ingredients": [{
+          "name": "wheat flour",
+          "id": 20081,
+          "quantity": {
+            "amount": 1.5,
+            "unit": "c"
+          }
+        },
+        {
+          "name": "eggs",
+          "id": 1123,
+          "quantity": {
+            "amount": 1,
+            "unit": "large"
+          }
+        },
+        {
+          "name": "salt",
+          "id": 2047,
+          "quantity": {
+            "amount": 0.5,
+            "unit": "tsp"
+          }
+        },
+        {
+          "name": "zucchini squash",
+          "id": 11477,
+          "quantity": {
+            "amount": 2,
+            "unit": ""
+          }
+        },
+        {
+          "name": "flat leaf parsley leaves",
+          "id": 11297,
+          "quantity": {
+            "amount": 0.25,
+            "unit": "cup"
+          }
+        },
+        {
+          "name": "kosher salt",
+          "id": 1082047,
+          "quantity": {
+            "amount": 0.25,
+            "unit": "teaspoon"
+          }
+        },
+        {
+          "name": "whole garlic clove",
+          "id": 11215,
+          "quantity": {
+            "amount": 1,
+            "unit": "clove"
+          }
+        }
+      ],
+      "instructions": [{
+          "instruction": "In a large mixing bowl, whisk together the dry ingredients (flour, pudding mix, soda and salt). Set aside.In a large mixing bowl of a stand mixer, cream butter for 30 seconds. Gradually add granulated sugar and brown sugar and cream until light and fluffy.",
+          "number": 1
+        },
+        {
+          "instruction": "Add egg and vanilla and mix until combined.",
+          "number": 2
+        },
+        {
+          "instruction": "Add dry ingredients and mix on low just until incorporated. Stir in chocolate chips.Scoop the dough into 1,5 tablespoon size balls and place on a plate or sheet. Cover with saran wrap and chill at least 2 hours or overnight.When ready to bake, preheat oven to 350 degrees.",
+          "number": 3
+        },
+        {
+          "instruction": "Place the cookie dough balls into ungreased muffin pan. Sprinkle with sea salt.",
+          "number": 4
+        },
+        {
+          "instruction": "Bake for 9 to 10 minutes, or until you see the edges start to brown.",
+          "number": 5
+        },
+        {
+          "instruction": "Remove the pan from the oven and let sit for 10 minutes before removing onto a cooling rack.Top with ice cream and a drizzle of chocolate sauce.",
+          "number": 6
+        }
+      ],
+      "name": "Loaded Chocolate Chip Pudding Cookie Cups",
+      "tags": [
+        "antipasti",
+        "starter",
+        "snack",
+        "appetizer",
+        "antipasto",
+        "hor d'oeuvre"
+      ]
+    }
+
+    let user = {
+      "name": "Saige O'Kon",
+      "id": 1,
+      "pantry": [{
+          ingredient: 11477,
+          amount: 1,
+          name: 'zucchini squash',
+          cost: 742
+        },
+        {
+          ingredient: 11297,
+          amount: 4,
+          name: 'flat leaf parsley leaves',
+          cost: 1030
+        },
+        {
+          ingredient: 1082047,
+          amount: 10,
+          name: 'kosher salt',
+          cost: 972
+        },
+        {
+          ingredient: 20081,
+          amount: 5,
+          name: 'wheat flour',
+          cost: 142
+        },
+        {
+          ingredient: 11215,
+          amount: 5,
+          name: 'whole garlic clove',
+          cost: 220
+        },
+        {
+          ingredient: 2047,
+          amount: 6,
+          name: 'salt',
+          cost: 280
+        },
+        {
+          ingredient: 1123,
+          amount: 8,
+          name: 'eggs',
+          cost: 472
+        }
+      ]
+    }
+
+    let pantry = new Pantry(user);
+
+    expect(pantry.verifyIngredients(recipe)).to.deep.equal({
+      ingredients: [ { name: 'zucchini squash', amountNeeded: 1 } ],
+      totalCost: 7.42
+    });
+  });
+
+  it("Should return a grocery list", function () {
+
+    expect(pantry.verifyIngredients(recipe)).to.deep.equal({
+      name: 'Grocery List',
+      ingredients: [
+        { name: 'bicarbonate of soda', amountNeeded: 1 },
+        { name: 'sucrose', amountNeeded: 1 },
+        { name: 'instant vanilla pudding', amountNeeded: 3 },
+        { name: 'brown sugar', amountNeeded: 1 },
+        { name: 'fine sea salt', amountNeeded: 1 },
+        { name: 'semi sweet chips', amountNeeded: 2 },
+        { name: 'unsalted butter', amountNeeded: 1 },
+        { name: 'vanilla', amountNeeded: 1 },
+        { name: 'wheat flour', amountNeeded: 1 }
+      ],
+      totalCost: 67.42
+    });
 
   });
 })

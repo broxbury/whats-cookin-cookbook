@@ -25,19 +25,21 @@ class Pantry {
   // -START-- MethodHandler1 --START- //
   verifyIngredients(recipe) {
     let recipeNames = this.findRecipeNames(recipe)
+
     let pantryIngredientNames = this.findPantryNames()
     let hasIngredients =
       this.checkUserHasIngredients(recipeNames, pantryIngredientNames)
     if (hasIngredients === false) {
       let missingGroceryList1 = this.missingGroceryItems(recipeNames, pantryIngredientNames, recipe);
-      console.log(missingGroceryList1)
       let missingGroceryList2 = this.checkCurrentIngredients(recipeNames, pantryIngredientNames, recipe)
-      console.log(missingGroceryList2)
       let finalGroceryList = this.combineGroceryLists(missingGroceryList1, missingGroceryList2);
-      // console.log(finalGroceryList)
       return finalGroceryList
-    } else {
-
+    } else if (hasIngredients === true) {
+      let doubleCheck = this.checkCurrentIngredients(recipeNames, pantryIngredientNames, recipe)
+      if (!doubleCheck === `${{ingredients: [], totalCost: 0}}`) {
+        return "Lets Cook!!!!"
+      } 
+      return doubleCheck
     }
   }
   // -END-- MethodHandler1 --END- //
@@ -176,14 +178,11 @@ class Pantry {
   }
 
   combineGroceryLists(missingGroceryList1, missingGroceryList2) {
-
     let finalList = {
       name: "Grocery List",
       ingredients: [],
       totalCost: undefined
     };
-
-    //  missingGroceryList1.ingredients += missingGroceryList2['ingredients']
 
     missingGroceryList1.ingredients.forEach((list1) => {
       if (!finalList.ingredients.includes(list1)) {
@@ -198,10 +197,8 @@ class Pantry {
       }
     })
     finalList.totalCost = (missingGroceryList1.totalCost + missingGroceryList2.totalCost)
-    console.log(finalList)
     return finalList
   };
 }
-
 // -END-- These are the function declorations for MethodHandler 1 --END- //
 module.exports = Pantry;
