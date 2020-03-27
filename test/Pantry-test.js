@@ -307,11 +307,11 @@ describe('Pantry', function () {
     ]
 
     expect(pantry.getNeededIngredients(needThisStuff, recipe)).to.deep.equal([{
-      name: 'bicarbonate of soda',
-      id: 18372,
-      quantity: {
-      amount: 0.5,  
-      unit: 'tsp'
+        name: 'bicarbonate of soda',
+        id: 18372,
+        quantity: {
+          amount: 0.5,
+          unit: 'tsp'
         },
         totalCostOfIngredient: 291
       },
@@ -517,7 +517,7 @@ describe('Pantry', function () {
         name: 'vanilla',
         amountNeeded: 1
       }
-    ]
+    ];
 
     expect(pantry.getTotalCost(needThisStuff, allIngredients)).to.deep.equal(66.00)
   });
@@ -1058,7 +1058,10 @@ describe('Pantry', function () {
     let pantry = new Pantry(user);
 
     expect(pantry.verifyIngredients(recipe)).to.deep.equal({
-      ingredients: [ { name: 'zucchini squash', amountNeeded: 1 } ],
+      ingredients: [{
+        name: 'zucchini squash',
+        amountNeeded: 1
+      }],
       totalCost: 7.42
     });
   });
@@ -1067,16 +1070,42 @@ describe('Pantry', function () {
 
     expect(pantry.verifyIngredients(recipe)).to.deep.equal({
       name: 'Grocery List',
-      ingredients: [
-        { name: 'bicarbonate of soda', amountNeeded: 1 },
-        { name: 'sucrose', amountNeeded: 1 },
-        { name: 'instant vanilla pudding', amountNeeded: 3 },
-        { name: 'brown sugar', amountNeeded: 1 },
-        { name: 'fine sea salt', amountNeeded: 1 },
-        { name: 'semi sweet chips', amountNeeded: 2 },
-        { name: 'unsalted butter', amountNeeded: 1 },
-        { name: 'vanilla', amountNeeded: 1 },
-        { name: 'wheat flour', amountNeeded: 1 }
+      ingredients: [{
+          name: 'bicarbonate of soda',
+          amountNeeded: 1
+        },
+        {
+          name: 'sucrose',
+          amountNeeded: 1
+        },
+        {
+          name: 'instant vanilla pudding',
+          amountNeeded: 3
+        },
+        {
+          name: 'brown sugar',
+          amountNeeded: 1
+        },
+        {
+          name: 'fine sea salt',
+          amountNeeded: 1
+        },
+        {
+          name: 'semi sweet chips',
+          amountNeeded: 2
+        },
+        {
+          name: 'unsalted butter',
+          amountNeeded: 1
+        },
+        {
+          name: 'vanilla',
+          amountNeeded: 1
+        },
+        {
+          name: 'wheat flour',
+          amountNeeded: 1
+        }
       ],
       totalCost: 67.42
     });
