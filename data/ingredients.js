@@ -1234,4 +1234,4 @@ let ingredientsData = [
   }
 ]
 
-module.exports = {ingredientsData}
+  // module.exports = {ingredientsData}

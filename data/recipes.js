@@ -5381,6 +5381,6 @@ const recipeData = [
     ]
   }
 ]
-module.exports
- =
-{recipeData}
+// module.exports
+//  =
+// {recipeData}

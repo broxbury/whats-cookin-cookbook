@@ -1,7 +1,9 @@
 const populatePage = document.querySelector('.populate-recipes');
 
-window.onload = populateRecipes();
-
+window.onload = function() {
+  populateRecipes();
+  randomizeUser();
+}
 
 function populateRecipes() {
   recipeData.forEach(recipe => {
@@ -10,4 +12,10 @@ function populateRecipes() {
       <img class="recipe-img" id="${recipe.id}" src="${recipe.image}">
     </section>`
   });
+}
+
+
+function randomizeUser() {
+  console.log(usersData);
+  // let user = new User()
 }
