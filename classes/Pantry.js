@@ -201,4 +201,8 @@ class Pantry {
   };
 }
 // -END-- These are the function declorations for MethodHandler 1 --END- //
-module.exports = Pantry;
+  if (typeof module !== 'undefined') {
+  module.exports = Pantry;
+}
+
+
