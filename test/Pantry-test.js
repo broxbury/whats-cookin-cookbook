@@ -757,7 +757,7 @@ describe('Pantry', function () {
       totalCost: 67.42
     });
   });
-// finish
+
   it("Should return Lets Cook!!!! All ingredients are found", function () {
 
     let recipe = {
@@ -908,8 +908,8 @@ describe('Pantry', function () {
 
     expect(pantry.verifyIngredients(recipe)).to.equal("Lets Cook!!!!")
   });
-// finish
-  it("Should", function () {
+
+  it("Should return an object that represents a grocery list", function () {
 
     let recipe = {
       "id": 595736,
