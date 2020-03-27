@@ -1,17 +1,16 @@
-const Pantry = require('../classes/Pantry');
+const Pantry = require('../src/Pantry');
 
 class User {
   constructor(person) {
     this.id = person.id;
     this.name = person.name;
-    this.pantry = person.pantry;
     this.favRecipes = [];
     this.cookBook = [];
+    this.pantry = person.pantry;
   }
 
   createPantry() {
     const pantry = new Pantry(this);
-
     return pantry;
   }
 

@@ -1,9 +1,9 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const User = require('../classes/User');
-const Pantry = require('../classes/Pantry');
-const Recipe = require('../classes/Recipe');
+const User = require('../src/User');
+const Pantry = require('../src/Pantry');
+const Recipe = require('../src/Recipe');
 
 
 
@@ -128,37 +128,50 @@ describe('User', function() {
   });
 
   it('should instantiate a new Pantry instance', function() {
-
-    let newPantry = user.createPantry();
-    expect(newPantry).to.eql({
+    user.createPantry();
+    expect(user.createPantry()).to.eql({
       pantryId: 1,
       pantry: [{
           ingredient: 11477,
-          amount: 4
+          amount: 4,
+          name: 'zucchini squash',
+          cost: 742
         },
         {
           ingredient: 11297,
-          amount: 4
+          amount: 4,
+          name: 'flat leaf parsley leaves',
+          cost: 1030
         },
         {
           ingredient: 1082047,
-          amount: 10
+          amount: 10,
+          name: 'kosher salt',
+          cost: 972
         },
         {
           ingredient: 20081,
-          amount: 5
+          amount: 5,
+          name: 'wheat flour',
+          cost: 142
         },
         {
           ingredient: 11215,
-          amount: 5
+          amount: 5,
+          name: 'whole garlic clove',
+          cost: 220
         },
         {
           ingredient: 2047,
-          amount: 6
+          amount: 6,
+          name: 'salt',
+          cost: 280
         },
         {
           ingredient: 1123,
-          amount: 8
+          amount: 8,
+          name: 'eggs',
+          cost: 472
         }
       ]
     });

@@ -1,9 +1,9 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const User = require('../classes/User');
-const Recipe = require('../classes/Recipe');
-const Pantry = require('../classes/Pantry')
+const User = require('../src/User');
+const Recipe = require('../src/Recipe');
+const Pantry = require('../src/Pantry')
 
 const data = require('../data/ingredients');
 const allIngredients = data.ingredientsData;
@@ -177,7 +177,7 @@ describe('Pantry', function () {
         }
       ]
     })
-    pantry = new Pantry(user);
+    pantry = user.createPantry();
 
   });
 

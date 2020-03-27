@@ -1,11 +1,11 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const User = require('../classes/User');
-const Recipe = require('../classes/Recipe');
-const Pantry = require('../classes/Pantry')
+const User = require('../src/User');
+const Recipe = require('../src/Recipe');
+const Pantry = require('../src/Pantry')
 
-describe('Pantry', function() {
+describe('Recipe', function() {
 
   let user;
   let pantry;
@@ -113,7 +113,7 @@ describe('Pantry', function() {
     expect(recipe).to.be.an.instanceof(Recipe)
   });
 
-  it.only('should add totalcostOfIngredient and name property each ingredient in the recipe', function() {
+  it('should add totalcostOfIngredient and name property each ingredient in the recipe', function() {
     expect(recipe.addProperties(recipe.ingredients)).to.deep.equal(
       [{
           id: 1123,
@@ -146,11 +146,11 @@ describe('Pantry', function() {
     )
   });
 
-  it.only('should calculate total cost to cost a recipe', function() {
+  it('should calculate total cost to cost a recipe', function() {
     expect(recipe.cost).to.equal(976);
   });
 
-  it.only('should return an array of instructions', function() {
+  it('should return an array of instructions', function() {
     expect(recipe.returnDirections()).to.deep.equal([{
         instruction: 'In a large mixing bowl, whisk together the dry ingredients (flour, pudding mix, soda and salt). Set aside.In a large mixing bowl of a stand mixer, cream butter for 30 seconds. Gradually add granulated sugar and brown sugar and cream until light and fluffy.',
         number: 1
