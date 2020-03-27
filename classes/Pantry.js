@@ -36,7 +36,7 @@ class Pantry {
       return finalGroceryList
     } else if (hasIngredients === true) {
       let doubleCheck = this.checkCurrentIngredients(recipeNames, pantryIngredientNames, recipe)
-      if (!doubleCheck === `${{ingredients: [], totalCost: 0}}`) {
+      if (doubleCheck.ingredients.length === 0) {
         return "Lets Cook!!!!"
       } 
       return doubleCheck
@@ -198,11 +198,7 @@ class Pantry {
     })
     finalList.totalCost = (missingGroceryList1.totalCost + missingGroceryList2.totalCost)
     return finalList
-  };
+  }
 }
 // -END-- These are the function declorations for MethodHandler 1 --END- //
-  if (typeof module !== 'undefined') {
-  module.exports = Pantry;
-}
-
-
+module.exports = Pantry;
