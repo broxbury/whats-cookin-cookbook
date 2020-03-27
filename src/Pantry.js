@@ -38,7 +38,7 @@ class Pantry {
       let doubleCheck = this.checkCurrentIngredients(recipeNames, pantryIngredientNames, recipe)
       if (doubleCheck.ingredients.length === 0) {
         return "Lets Cook!!!!"
-      } 
+      }
       return doubleCheck
     }
   }
@@ -201,4 +201,6 @@ class Pantry {
   }
 }
 // -END-- These are the function declorations for MethodHandler 1 --END- //
-module.exports = Pantry;
+if (typeof module !== 'undefined') {
+  module.exports = Pantry;
+}
