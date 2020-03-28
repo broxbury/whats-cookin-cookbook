@@ -1,5 +1,6 @@
-const data = require('../data/ingredients');
-const allIngredients = data.ingredientsData;
+
+// const data = require('../data/ingredients');
+// const allIngredients = data.ingredientsData;
 
 class Pantry {
   constructor(user) {
@@ -9,7 +10,7 @@ class Pantry {
   // METHODS THAT ARE USED FOR KEY:VALUE PAIRS //
   newPantry(pantry) {
     let newPantry = pantry.reduce((acc, listItem1) => {
-      allIngredients.forEach((listItem2) => {
+      ingredientsData.forEach((listItem2) => {
         if (listItem2.id === listItem1.ingredient) {
           listItem1['name'] = listItem2.name
           listItem1['cost'] = listItem2.estimatedCostInCents
