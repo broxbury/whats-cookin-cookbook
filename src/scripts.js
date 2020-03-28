@@ -8,11 +8,17 @@ window.onload = function() {
 function populateRecipes() {
   recipeData.forEach(recipe => {
     populatePage.innerHTML +=
-    `<section class="recipe-card" id="${recipe.id}">
+      `<section class="recipe-card" id="${recipe.id}">
       <img class="recipe-img" id="${recipe.id}" src="${recipe.image}">
       <section class="recipe-card-info">
-      <h2 class="recipe-title">${recipe.name}</h2>
-      <img class="heart" src="http://www.w3.org/2000/svg">
+        <section class="title-text">
+          <h2 class="recipe-title">${recipe.name}</h2>
+        </section>
+        <section class="btn-container">
+          <img class="recipe-card-images heart-img" id="${recipe.id}" src='../assets/heart-circle-outline.svg'>
+          <img class="recipe-card-images play-img" id="${recipe.id}" src='../assets/play-outline.svg'>
+          <img class="recipe-card-images book-img" id="${recipe.id}" src='../assets/book-outline.svg'>
+        </section>
       </section>
     </section>`
   });
