@@ -11,7 +11,7 @@ describe('Recipe', function() {
   let pantry;
   let recipe;
 
-  this.beforeEach(function() {
+  beforeEach(function() {
     recipe = new Recipe({
       "id": 595736,
       "image": "https://spoonacular.com/recipeImages/595736-556x370.jpg",

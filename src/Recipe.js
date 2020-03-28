@@ -1,5 +1,5 @@
-const data = require('../data/ingredients');
-const allIngredients = data.ingredientsData;
+// const data = require('../data/ingredients');
+// const allIngredients = ingredientsData;
 
 class Recipe {
   constructor(dish) {
@@ -23,7 +23,7 @@ class Recipe {
 
   addProperties(ingredients) {
     let totalCost = ingredients.reduce((acc, ingredient) => {
-      allIngredients.forEach(item => {
+      ingredientsData.forEach(item => {
         if (ingredient.id === item.id) {
           ingredient['name'] = item.name;
           ingredient['totalCostOfIngredient'] = item.estimatedCostInCents * ingredient.quantity.amount;
