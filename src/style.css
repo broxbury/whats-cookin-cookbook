@@ -6,10 +6,10 @@ body {
 header {
   display: flex;
   justify-content: space-between;
-  height: 6rem;
+  height: 40vh;
   width: 100%;
   margin-bottom: 1em;
-  background-color: #CACFD6;
+  background-color: white;
 }
 
 .left-header {
@@ -18,14 +18,12 @@ width: 30%;
 }
 
 .recipe-img {
-  width: 92%;
-  padding: 1em;
+  width: 100%;
   border-radius: 3px;
 }
 
 .recipe-img:hover {
-  width: 98%;
-  padding: 1em;
+  opacity: 80%;
   border-radius: 3px;
 }
 
@@ -42,7 +40,13 @@ width: 30%;
 }
 
 .populate-recipes {
-  column-width: 32em;
+  column-width: 20em;
+}
+
+.recipe-title {
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
 }
 
 .recipe-card {
@@ -51,6 +55,21 @@ width: 30%;
   margin: 1rem;
   padding: 0rem;
   width: 100%;
-  height: 30em;
-  background: #E5D1D0;
+  height: 20em;
+  background: #FFF;
+  border-radius: 3px;
+}
+.recipe-card-info {
+  display: block;
+  justify-content: space-between;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.recipe-card-images {
+  width: 10%;
+
 }
