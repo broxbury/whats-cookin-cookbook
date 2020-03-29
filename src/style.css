@@ -55,30 +55,42 @@ header {
   justify-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: 2.5% 0 0 13.5%;
+  margin: 1% 0 0 12.5%;
 }
 
 .recipe-tag {
   height: 125px;
   width: 100px;
+  margin-top: 2.5%;
 }
 
 .tag-img {
-  border: 3px solid blue;
+  border: 3px solid hsl(24, 64%, 54%);
   border-radius: 50%;
-  height: 4.5em;
-  width: 4.5em;
-  margin: 0 0 0 12%;
+  height: 6em;
+  width: 6em;
+  margin-top: 5%;
+  box-shadow: 2px 2px 2px #2a4569;
+}
+.tag-img:hover {
+  border: 5px solid hsl(24, 64%, 54%);
+  border-radius: 50%;
+  height: 6em;
+  width: 6em;
+  margin-top: 5%;
+  box-shadow: 3px 3px 3px #2a4569;
+  opacity: 85%;
 }
 
 .tag-txt {
-font-size: smaller;
-font-weight: bold;
+  font-size: larger;
+  margin: 0;
+  font-weight: bold;
+  text-align: center;
 }
 
 .recipe-img {
   border-bottom: 2px solid black;
-  ;
   width: 100%;
   border-radius: 3px;
 }
@@ -94,25 +106,26 @@ font-weight: bold;
 }
 
 .populate-recipes {
-  -webkit-column-count: 3;
-  -webkit-column-gap: 3em;
-  column-count: 3;
-  column-gap: 3em;
+  -webkit-column-count: 4;
+  -webkit-column-gap: 2em;
+  column-count: 4;
+  column-gap: 2em;
 }
 
 .recipe-title {
   display: flex;
   justify-content: center;
-  font-size: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 .recipe-card {
   border: 2px solid black;
   position: relative;
   display: inline-block;
-  width: 80%;
+  width: 65%;
   height: 20%;
-  margin: 10%;
+  margin: 10% 10% 10% 20%;
   background: #FFF;
   border-radius: 3px;
   z-index: 1;
@@ -126,12 +139,13 @@ font-weight: bold;
 .btn-container {
   display: flex;
   justify-content: space-around;
+  margin: 0 0 2% 0;
 }
 
 .recipe-card-images {
   width: 10%;
-
 }
+
 .display-recipe {
     position: fixed;
     top: 30px;
