@@ -7,16 +7,18 @@ const mainSearchInput = document.querySelector('.search-all');
 const playBTN = document.getElementById('play')
 
 mainSearchInput.addEventListener('input', searchTasks);
-populatePage.addEventListener('click', function() {
+populatePage.addEventListener('click', function () {
   createRecipe(event)
   checkRecipe(event)
+  favoriteRecipeHandler(event)
+  cookBookHandler(event)
 });
 
 let user;
 let currentRecipe;
 let recipes = [];
 
-window.onload = function() {
+window.onload = function () {
   populateRecipes();
   randomizeUser();
 }
@@ -32,7 +34,6 @@ function populateRecipes() {
         </section>
         <section class="btn-container">
           <img class="recipe-card-images heart-img" data-id="${recipe.id}" src='../assets/heart-circle-outline.svg'>
-          <img class="recipe-card-images play-img" data-id="${recipe.id}" src='../assets/play-outline.svg'>
           <img class="recipe-card-images book-img" data-id="${recipe.id}" src='../assets/book-outline.svg'>
         </section>
       </section>
@@ -43,8 +44,8 @@ function populateRecipes() {
 
 function randomizeUser() {
   let randomIndex = Math.floor(Math.random() * usersData.length);
-   user = new User(usersData[randomIndex]);
-   return user
+  user = new User(usersData[randomIndex]);
+  return user
 }
 
 //search recipes:
@@ -135,13 +136,72 @@ function displayGroceryList(groceryList) {
     <li>You are missing ${currentIngredientName} and we need ${itemCost} more!</li>
     `
   });
-  
+
   instructionList.innerHTML = `
   <h2>Estimated Cost Of Ingredients</h2>
   <p>$${groceryList.totalCost}</p>
   `
 }
- function closeWindow() {
+
+function closeWindow() {
   let displayCard = document.querySelector('.display-recipe');
   displayCard.classList.toggle('hidden')
- }
+}
+
+function favoriteRecipeHandler(event) {
+  let currentId = event.target.dataset.id
+  let currentRecipe = recipeData.find(recipe => recipe.id == currentId);
+  // console.log(currentRecipe)
+  if (event.target.classList.contains("heart-img")) {
+    if (user.favRecipes.includes(currentRecipe)) {
+      user.removeFavRecipe(currentRecipe)
+      deactiveFavImg(currentId)
+      // console.log("remove", user.favRecipes)
+    } else {
+      user.addFavRecipe(currentRecipe)
+      activeFavImg(currentId)
+      // console.log("add", user.favRecipes)
+    }
+  }
+}
+
+function activeFavImg(currentId) {
+  let activeImg = document.querySelector(`.heart-img[data-id='${currentId}']`)
+  activeImg.src = "../assets/heart-circle.svg"
+  return
+}
+
+function deactiveFavImg(currentId) {
+  let deActive = document.querySelector(`.heart-img[data-id='${currentId}']`)
+  deActive.src = "../assets/heart-circle-outline.svg"
+  return
+}
+
+function cookBookHandler(event) {
+  let currentId = event.target.dataset.id
+  let currentRecipe = recipeData.find(recipe => recipe.id == currentId);
+  // console.log(currentRecipe)
+  if (event.target.classList.contains("book-img")) {
+    if (user.cookBook.includes(currentRecipe)) {
+      user.removeFromCookBook(currentRecipe)
+      deactiveBookImg(currentId)
+      // console.log("remove", user.favRecipes)
+    } else {
+      user.addToCookBook(currentRecipe)
+      activeBookImg(currentId)
+      // console.log("add", user.favRecipes)
+    }
+  }
+}
+
+function activeBookImg(currentId) {
+  let activeImg = document.querySelector(`.book-img[data-id='${currentId}']`)
+  activeImg.src = "../assets/book.svg"
+  return
+}
+
+function deactiveBookImg(currentId) {
+  let deActive = document.querySelector(`.book-img[data-id='${currentId}']`)
+  deActive.src = "../assets/book-outline.svg"
+  return
+}
