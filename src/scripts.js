@@ -72,13 +72,11 @@ function searchRecipes(event) {
 
 function hideResults(recipeId) {
   let hideRecipe = document.querySelector(`.recipe-card[data-id="${recipeId}"]`);
-  console.log(hideRecipe);
   hideRecipe.classList.add('hidden');
 }
 
 function showResults(recipeId) {
   let showRecipe = document.querySelector(`.recipe-card[data-id="${recipeId}"]`);
-  console.log(showRecipe);
   showRecipe.classList.remove('hidden');
 }
 
