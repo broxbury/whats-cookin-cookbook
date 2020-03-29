@@ -26,7 +26,7 @@ class User {
   }
 
   addToCookBook(recipe) {
-    if(!this.cookBook.includes(recipe)) {
+    if (!this.cookBook.includes(recipe)) {
       this.cookBook.push(recipe);
     }
   }
