@@ -6,13 +6,21 @@ body {
 header {
   height: 100vh;
   width: 100%;
+  /* background-image: url("../assets/header.jpg");
+  background-size: cover; */
+  background-position-x: center;
+  border-bottom: 4px solid black;
+}
+
+header::after {
+  opacity: 70%;
+  height: 100vh;
+  width: 100%;
   background-image: url("../assets/header.jpg");
   background-size: cover;
   background-position-x: center;
   border-bottom: 4px solid black;
 }
-
-
 
 .search-all {
   margin: 0.5rem;
@@ -50,7 +58,7 @@ header {
 
 .tag-container {
   height: 60vh;
-  width: 20%;
+  width: 87%;
   display: inline-flex;
   justify-content: space-between;
   flex-direction: row;
@@ -59,8 +67,8 @@ header {
 }
 
 .recipe-tag {
-  height: 125px;
-  width: 100px;
+  height: 5%;
+  width: 12%;
   margin-top: 2.5%;
 }
 
@@ -83,10 +91,12 @@ header {
 }
 
 .tag-txt {
+  position: relative;
+  left: 10%;
   font-size: larger;
   margin: 0;
   font-weight: bold;
-  text-align: center;
+  color: white;
 }
 
 .recipe-img {
