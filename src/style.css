@@ -27,13 +27,13 @@ header {
   height: 1.3em;
   width: 80%;
   font-size: 9em;
-  margin: 0 0 0 3%;
+  margin: 0 0 0 .5%;
   font-family: cursive;
 }
 
 .header-btns {
     display: inline-flex;
-    margin: 3% 0 0 10.3%;
+    margin: 2% 0 0 10.3%;
     width: 25.5%;
     height: 6vh;
 }
@@ -60,19 +60,20 @@ header {
 
 .recipe-tag {
   height: 125px;
-  width: 125px;
+  width: 100px;
 }
 
 .tag-img {
   border: 3px solid blue;
   border-radius: 50%;
-  height: 6em;
-  width: 6em;
-  margin: 0;
+  height: 4.5em;
+  width: 4.5em;
+  margin: 0 0 0 12%;
 }
 
 .tag-txt {
-  text-align: center;
+font-size: smaller;
+font-weight: bold;
 }
 
 .recipe-img {
@@ -140,4 +141,7 @@ header {
     z-index: 123;
     border: 2px solid blue;
     background-color: white;
+}
+.hidden {
+  display: none;
 }
