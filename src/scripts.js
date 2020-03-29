@@ -2,6 +2,8 @@ const populatePage = document.querySelector('.populate-recipes');
 const filterFavoriteRecipes = document.querySelector('.favorites-btn');
 const filterCookbook = document.querySelector('.cookbook-btn');
 const mainSearchInput = document.querySelector('.search-all');
+// const displayRecipeCard = document.querySelector('.display-recipe');
+// const ingredientsList = document.querySelector('.ingredients-list');
 
 mainSearchInput.addEventListener('input', searchTasks);
 populatePage.addEventListener('click', createRecipe);
@@ -68,7 +70,6 @@ function searchTasks(event) {
 
 function createRecipe(event) {
   let currentRecipeId = event.target.dataset.id;
-
   if (event.target.classList.contains('recipe-img')) {
     let currentRecipe = recipeData.find(recipe => recipe.id == currentRecipeId);
     let isActive = recipes.find(recipe => recipe.id == currentRecipeId);
@@ -76,7 +77,7 @@ function createRecipe(event) {
     if (!isActive) {
       let recipe = new Recipe(currentRecipe);
       recipes.push(recipe)
-      console.log(recipes);
+      recipeDisplay(recipe)
     } else {
       recipeDisplay(isActive)
     }
@@ -87,7 +88,29 @@ function createRecipe(event) {
 }
 
 function recipeDisplay(recipe) {
+  let displayCard = document.querySelector('.display-recipe');
+  let ingredientsList = document.querySelector(".ingredients-list");
+  let instructionList = document.querySelector(".instruction-list");
+  document.getElementById('recipe-img-large').src = recipe.image;
+  document.getElementById('recipe-title').innerHTML = recipe.name;
 
+  ingredientsList.innerHTML = "";
+  instructionList.innerHTML = "";
 
+  recipe.ingredients.forEach(ingredient => {
+    let currentRecipeName = ingredient.name
+    ingredientsList.innerHTML += `
+    <li>${currentRecipeName}</li>
+    `
+  });
+
+  recipe.instructions.forEach(instruction => {
+    let currentInstruction = instruction.instruction;
+    instructionList.innerHTML += `
+    <li>${currentInstruction}</li>
+    `
+  });
+
+  displayCard.classList.toggle('hidden');
   //displays second page with recipe info
 }
