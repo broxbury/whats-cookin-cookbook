@@ -15,7 +15,7 @@ class User {
   }
 
   addFavRecipe(recipe) {
-    if(!this.favRecipes.includes(recipe)) {
+    if (!this.favRecipes.includes(recipe)) {
       this.favRecipes.push(recipe);
     }
   }

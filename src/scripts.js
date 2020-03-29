@@ -141,3 +141,7 @@ function displayGroceryList(groceryList) {
   <p>$${groceryList.totalCost}</p>
   `
 }
+ function closeWindow() {
+  let displayCard = document.querySelector('.display-recipe');
+  displayCard.classList.toggle('hidden')
+ }
