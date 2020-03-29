@@ -89,9 +89,8 @@
   </header>
   <main class="main-page">
     <section class="populate-recipes">
-      <section class="display-recipe hidden">
+      <section class="display-recipe hidden" data-id="large-display-card">
         <section class="large-display">
-          <img class="recipe-img-large">
           <section class="recipe-card-info">
             <section class="title-text">
               <h2 id="recipe-title"></h2>
@@ -101,9 +100,19 @@
               <img class="recipe-card-images play-img" data-id="" src='../assets/play-outline.svg'>
               <img class="recipe-card-images book-img" data-id="" src='../assets/book-outline.svg'>
             </section>
-          </section>
-          <section id="ingredients">
-
+            <section class="bottom-row">
+              <section class="recipe-img-large">
+                <img id="recipe-img-large" src="">
+              </section>
+              <section class="recipe-ingredients">
+                <ul class="ingredients-list">
+                </ul>
+              </section>
+              <section class="recipe-instructions">
+                <ul class="instruction-list">
+                </ul>
+              </section>
+            </section>
           </section>
         </section>
       </section>

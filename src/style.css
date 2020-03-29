@@ -150,12 +150,43 @@ header {
     position: fixed;
     top: 30px;
     left: 10%;
-    height: 80vh;
+    height: auto;
     width: 80%;
     z-index: 123;
     border: 2px solid blue;
     background-color: white;
 }
+
+#recipe-img-large {
+  width: 21rem;%;
+  margin-left: 2em;
+  margin-top: 3em;
+}
+
+#recipe-title {
+  display: flex;
+  justify-content: center;
+}
+
 .hidden {
   display: none;
+}
+
+.recipe-ingredients {
+  margin: .3rem;
+}
+.ingredients-list {
+margin: .3rem;
+}
+
+.bottom-row{
+  display: flex;
+
+}
+ul {
+  style: none;
+
+}
+li {
+  padding-top: .6rem;
 }
