@@ -6,8 +6,8 @@ const mainSearchInput = document.querySelector('.search-all');
 // const ingredientsList = document.querySelector('.ingredients-list');
 const playBTN = document.getElementById('play')
 
-mainSearchInput.addEventListener('input', searchTasks);
-populatePage.addEventListener('click', function () {
+mainSearchInput.addEventListener('input', searchRecipes);
+populatePage.addEventListener('click', function() {
   createRecipe(event)
   checkRecipe(event)
   favoriteRecipeHandler(event)
@@ -26,7 +26,7 @@ window.onload = function () {
 function populateRecipes() {
   recipeData.forEach(recipe => {
     populatePage.innerHTML +=
-      `<section class="recipe-card" id="${recipe.id}">
+      `<section class="recipe-card" data-id="${recipe.id}">
       <img class="recipe-img" data-id="${recipe.id}" src="${recipe.image}">
       <section class="recipe-card-info">
         <section class="title-text">
@@ -41,6 +41,14 @@ function populateRecipes() {
   });
 }
 
+// function populateRecipesArray() {
+//   recipeData.forEach(recipe => {
+//     if (!recipes.includes(recipe)) {
+//       recipes.push(recipe);
+//     }
+//   });
+// }
+
 
 function randomizeUser() {
   let randomIndex = Math.floor(Math.random() * usersData.length);
@@ -49,22 +57,30 @@ function randomizeUser() {
 }
 
 //search recipes:
-function searchTasks(event) {
-  //   var filterSearch = event.target.value.toUpperCase();
-  //
-  //   for (var i = 0; i < toDoObjectArray.length; i++) {
-  //     var toDoListIdToHide = toDoObjectArray[i].id;
-  //     var toDoTitle = toDoObjectArray[i].taskTitle.toUpperCase();
-  //
-  //       if (toDoTitle.includes(`${filterSearch}`)) {
-  //         showResults(toDoListIdToHide);
-  //       } else {
-  //         hideResults(toDoListIdToHide);
-  //     }
-  //   }
+function searchRecipes(event) {
+  let filterSearch = event.target.value.toUpperCase();
+
+  recipeData.forEach(recipe => {
+    let recipeId = recipe.id;
+    let recipeTitle = recipe.name.toUpperCase();
+    if (recipeTitle.includes(`${filterSearch}`)) {
+      showResults(recipeId);
+    } else {
+      hideResults(recipeId);
+    }
+  });
 }
-//
-//
+
+function hideResults(recipeId) {
+  let hideRecipe = document.querySelector(`.recipe-card[data-id="${recipeId}"]`);
+  hideRecipe.classList.add('hidden');
+}
+
+function showResults(recipeId) {
+  let showRecipe = document.querySelector(`.recipe-card[data-id="${recipeId}"]`);
+  showRecipe.classList.remove('hidden');
+}
+
 
 function createRecipe(event) {
   let currentRecipeId = event.target.dataset.id;
