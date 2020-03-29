@@ -23,7 +23,6 @@ class Pantry {
     return newPantry
   }
 
-  // -START-- MethodHandler1 --START- //
   verifyIngredients(recipe) {
     let recipeNames = this.findRecipeNames(recipe)
 
@@ -159,7 +158,7 @@ class Pantry {
   }
 
   getTotalCost(amountOfNeededIngredients) {
-    let cost = allIngredients.reduce((num, item) => {
+    let cost = ingredientsData.reduce((num, item) => {
       amountOfNeededIngredients.forEach((ingredient) => {
         if (item.name === ingredient.name) {
           num += (ingredient.amountNeeded * item.estimatedCostInCents)

@@ -4,15 +4,17 @@ const filterCookbook = document.querySelector('.cookbook-btn');
 const mainSearchInput = document.querySelector('.search-all');
 // const displayRecipeCard = document.querySelector('.display-recipe');
 // const ingredientsList = document.querySelector('.ingredients-list');
+const playBTN = document.getElementById('play')
 
 mainSearchInput.addEventListener('input', searchTasks);
-populatePage.addEventListener('click', createRecipe);
+populatePage.addEventListener('click', function() {
+  createRecipe(event)
+  checkRecipe(event)
+});
 
-
+let user;
+let currentRecipe;
 let recipes = [];
-
-
-
 
 window.onload = function() {
   populateRecipes();
@@ -41,13 +43,8 @@ function populateRecipes() {
 
 function randomizeUser() {
   let randomIndex = Math.floor(Math.random() * usersData.length);
-  let user = new User(usersData[randomIndex]);
-  user.createPantry();
-  console.log(user);
-  console.log(user.createPantry());
-  //create a new User each time the page loads
-  // let user = new User()
-  // call user.createPantry
+   user = new User(usersData[randomIndex]);
+   return user
 }
 
 //search recipes:
@@ -71,7 +68,7 @@ function searchTasks(event) {
 function createRecipe(event) {
   let currentRecipeId = event.target.dataset.id;
   if (event.target.classList.contains('recipe-img')) {
-    let currentRecipe = recipeData.find(recipe => recipe.id == currentRecipeId);
+    currentRecipe = recipeData.find(recipe => recipe.id == currentRecipeId);
     let isActive = recipes.find(recipe => recipe.id == currentRecipeId);
 
     if (!isActive) {
@@ -113,4 +110,34 @@ function recipeDisplay(recipe) {
 
   displayCard.classList.toggle('hidden');
   //displays second page with recipe info
+}
+
+function checkRecipe(event) {
+  let ingredientsList = document.querySelector(".ingredients-list");
+  let instructionList = document.querySelector(".instruction-list");
+  let currentPantry = user.createPantry()
+  if (event.target.classList.contains('play-img')) {
+    ingredientsList.innerHTML = "";
+    instructionList.innerHTML = "";
+    let groceryList = currentPantry.verifyIngredients(currentRecipe)
+    displayGroceryList(groceryList);
+  }
+}
+
+function displayGroceryList(groceryList) {
+  let ingredientsList = document.querySelector(".ingredients-list");
+  let instructionList = document.querySelector(".instruction-list");
+
+  groceryList.ingredients.forEach(ingredient => {
+    let currentIngredientName = ingredient.name
+    let itemCost = ingredient.amountNeeded
+    ingredientsList.innerHTML += `
+    <li>You are missing ${currentIngredientName} and we need ${itemCost} more!</li>
+    `
+  });
+  
+  instructionList.innerHTML = `
+  <h2>Estimated Cost Of Ingredients</h2>
+  <p>$${groceryList.totalCost}</p>
+  `
 }
