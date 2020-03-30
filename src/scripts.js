@@ -114,9 +114,9 @@ function recipeDisplay(recipe) {
   instructionList.innerHTML = "";
 
   recipe.ingredients.forEach(ingredient => {
-    let currentRecipeName = ingredient.name
+    let currentIngredientName = ingredient.name
     ingredientsList.innerHTML += `
-    <li>${currentRecipeName}</li>
+    <li>${currentIngredientName}, ${ingredient.amount} ${ingredient.unit}</li>
     `
   });
 

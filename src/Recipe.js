@@ -22,19 +22,21 @@ class Recipe {
   }
 
   addProperties(ingredients) {
-    let totalCost = ingredients.reduce((acc, ingredient) => {
+    let ingredientsObjs = ingredients.reduce((acc, ingredient) => {
       ingredientsData.forEach(item => {
-        if (ingredient.id === item.id) {
+      let isInArray = acc.find(ingredient => ingredient['name'] === item.name);
+        if (ingredient.id === item.id && !isInArray) {
           ingredient['name'] = item.name;
           ingredient['totalCostOfIngredient'] = item.estimatedCostInCents * ingredient.quantity.amount;
+          ingredient['unit'] = ingredient.quantity.unit;
+          ingredient['amount'] = ingredient.quantity.amount;
           acc.push(ingredient);
-          return
         };
       });
       return acc;
     }, []);
-    this.ingredients = totalCost;
-    return this.ingredients
+    console.log(ingredientsObjs);
+    return ingredientsObjs;
   }
 
   returnDirections() {
