@@ -23,6 +23,7 @@ class Pantry {
     return newPantry
   }
 
+  // -START-- MethodHandler1 --START- //
   verifyIngredients(recipe) {
     let recipeNames = this.findRecipeNames(recipe)
 
@@ -91,14 +92,14 @@ class Pantry {
   }
 
   returnMatchingNames(recipeNames, pantryIngredientNames) {
-    var missingNames = recipeNames.filter((name) => pantryIngredientNames.includes(name));
-    return missingNames
+    var matchingNames = recipeNames.filter((name) => pantryIngredientNames.includes(name));
+    return matchingNames
   }
 
   getNeededIngredients(missingIngredients, recipe) {
     let missing = recipe.ingredients.reduce((acc, ingredient) => {
       missingIngredients.forEach((name) => {
-        if (name === ingredient.name) {
+        if (name === ingredient.name && !acc.includes(ingredient)) {
           acc.push(ingredient)
           return acc
         }
@@ -142,7 +143,7 @@ class Pantry {
     let neededAmounts = pantryIngredients.reduce((acc, ingredient) => {
       recipe.ingredients.forEach((item) => {
         let needed = {}
-        if ((item.name === ingredient.name && ingredient.amount <= item.quantity.amount)) {
+        if ((item.name === ingredient.name && ingredient.amount < item.quantity.amount)) {
           let recipeAmount = item.quantity.amount;
           let pantryAmount = ingredient.amount;
           let difference = Math.abs(pantryAmount - recipeAmount);

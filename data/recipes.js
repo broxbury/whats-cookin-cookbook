@@ -2127,13 +2127,13 @@ const recipeData = [
           "unit": "servings"
         }
       },
-      {
-        "id": 8120,
-        "quantity": {
-          "amount": 0.5,
-          "unit": "cup"
-        }
-      },
+      // {
+      //   "id": 8120,
+      //   "quantity": {
+      //     "amount": 0.5,
+      //     "unit": "cup"
+      //   }
+      // },
       {
         "id": 8120,
         "quantity": {
