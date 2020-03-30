@@ -2,11 +2,13 @@ const populatePage = document.querySelector('.populate-recipes');
 const filterFavoriteRecipes = document.querySelector('.favorites-btn');
 const filterCookbook = document.querySelector('.cookbook-btn');
 const mainSearchInput = document.querySelector('.search-all');
+const recipeTagContainer = document.querySelector('.tag-container');
 // const displayRecipeCard = document.querySelector('.display-recipe');
 // const ingredientsList = document.querySelector('.ingredients-list');
 const playBTN = document.getElementById('play')
 
 mainSearchInput.addEventListener('input', searchRecipes);
+recipeTagContainer.addEventListener('click', filterByTag)
 populatePage.addEventListener('click', function() {
   createRecipe(event)
   checkRecipe(event)
@@ -18,7 +20,7 @@ let user;
 let currentRecipe;
 let recipes = [];
 
-window.onload = function () {
+window.onload = function() {
   populateRecipes();
   randomizeUser();
 }
@@ -121,7 +123,7 @@ function recipeDisplay(recipe) {
   recipe.instructions.forEach(instruction => {
     let currentInstruction = instruction.instruction;
     instructionList.innerHTML += `
-    <li>${currentInstruction}</li>
+    <li>${instruction.number}) ${currentInstruction}</li>
     `
   });
 
@@ -220,4 +222,24 @@ function deactiveBookImg(currentId) {
   let deActive = document.querySelector(`.book-img[data-id='${currentId}']`)
   deActive.src = "../assets/book-outline.svg"
   return
+}
+
+function filterByTag(event) {
+  let currentTag = event.target
+  let tagId = event.target.id
+  if (currentTag.classList.contains('tag-img')) {
+    displayRecipesByTag(tagId, currentTag);
+  }
+}
+
+function displayRecipesByTag(tagId, currentTag) {
+  let allCards = document.querySelectorAll('.recipe-card');
+  allCards.forEach(card => card.classList.remove('hidden'));
+
+  recipeData.forEach(recipe => {
+    let currentRecipe = document.querySelector(`.recipe-card[data-id="${recipe.id}"]`)
+    if(!recipe.tags.includes(tagId)) {
+      currentRecipe.classList.add('hidden');
+    }
+  });
 }

@@ -80,6 +80,7 @@ header::after {
   margin-top: 5%;
   box-shadow: 2px 2px 2px #2a4569;
 }
+
 .tag-img:hover {
   border: 5px solid hsl(24, 64%, 54%);
   border-radius: 50%;
@@ -96,7 +97,7 @@ header::after {
   font-size: larger;
   margin: 0;
   font-weight: bold;
-  color: white;
+  color: black;
 }
 
 .recipe-img {
@@ -116,9 +117,7 @@ header::after {
 }
 
 .populate-recipes {
-  -webkit-column-count: 4;
-  -webkit-column-gap: 2em;
-  column-count: 4;
+  column-count: 3;
   column-gap: 2em;
 }
 
@@ -165,6 +164,10 @@ header::after {
     z-index: 123;
     border: 2px solid blue;
     background-color: white;
+    top: 10%;
+    bottom: 10%;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #recipe-img-large {
