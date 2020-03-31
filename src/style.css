@@ -12,9 +12,18 @@ header {
   border-bottom: 4px solid black;
 }
 
-.search-all {
+.search-all,
+.filter-btn {
+  border: 2px solid lightgrey;
   margin: 0.5rem;
   width: 15%;
+  box-shadow: 1px 1px 1px 1px lightgrey;
+  font-size: larger;
+}
+
+.filter-btn,
+.recipe-card-images {
+  cursor: grab;
 }
 
 .header-title {
@@ -28,9 +37,9 @@ header {
 
 .header-btns {
   display: inline-flex;
-  width: 80%;
+  width: 100%;
   height: 7vh;
-  margin: 2% 0 2% 25%;
+  justify-content: center;
 }
 
 .main-page {
@@ -70,6 +79,7 @@ header {
   margin-top: 5%;
   box-shadow: 3px 3px 3px #2a4569;
   opacity: 85%;
+  cursor: grab;
 }
 
 .tag-txt {
@@ -90,11 +100,7 @@ header {
 .recipe-img:hover {
   opacity: 80%;
   border-radius: 3px;
-}
-
-.filter-btn {
-  margin: 0.5rem;
-  width: 20%;
+  cursor: grab;
 }
 
 .populate-recipes {
