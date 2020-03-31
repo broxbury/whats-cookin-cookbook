@@ -1,7 +1,7 @@
 if (typeof module !== 'undefined') {
   data = require('../data/ingredients');
   ingredientsData = data.ingredientsData;
-  Pantry = require('../src/Pantry')
+  Pantry = require('../src/Pantry');
 }
 // const allIngredients = data.ingredientsData;
 // const Pantry = require('../src/Pantry')

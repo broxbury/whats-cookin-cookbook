@@ -1,8 +1,8 @@
 if (typeof module !== 'undefined') {
-  data = require('../data/ingredients');
-  ingredientsData = data.ingredientsData;
+   data = require('../data/ingredients');
+   ingredientsData = data.ingredientsData;
 }
-// const allIngredients = data.ingredientsData;
+
 
 class Recipe {
   constructor(dish) {
