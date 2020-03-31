@@ -159,8 +159,8 @@ function displayGroceryList(groceryList) {
   });
 
   instructionList.innerHTML = `
-  <h2>Estimated Cost Of Ingredients</h2>
-  <p>$${groceryList.totalCost}</p>
+  <h2>Cost Of Ingredients</h2>
+  <p class="grocery-total">$${groceryList.totalCost}</p>
   `
 }
 
