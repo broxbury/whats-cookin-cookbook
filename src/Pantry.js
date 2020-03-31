@@ -1,6 +1,7 @@
-
-// const data = require('../data/ingredients');
-// const allIngredients = data.ingredientsData;
+if (typeof module !== 'undefined') {
+  data = require('../data/ingredients');
+  ingredientsData = data.ingredientsData;
+}
 
 class Pantry {
   constructor(user) {

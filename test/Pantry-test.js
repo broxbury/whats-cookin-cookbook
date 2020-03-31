@@ -5,8 +5,10 @@ const User = require('../src/User');
 const Recipe = require('../src/Recipe');
 const Pantry = require('../src/Pantry')
 
-const data = require('../data/ingredients');
-const allIngredients = data.ingredientsData;
+  // if (typeof module !== 'undefined') {
+  //   data = require('../data/ingredients');
+  // }
+  // const allIngredients = data.ingredientsData;
 
 describe('Pantry', function () {
 
@@ -519,7 +521,7 @@ describe('Pantry', function () {
       }
     ];
 
-    expect(pantry.getTotalCost(needThisStuff, allIngredients)).to.deep.equal(66.00)
+    expect(pantry.getTotalCost(needThisStuff, ingredientsData)).to.deep.equal(66.00)
   });
 
   it("Should return total cost of all missing items", function () {

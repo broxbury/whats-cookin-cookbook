@@ -1,12 +1,15 @@
 const populatePage = document.querySelector('.populate-recipes');
-const filterFavoriteRecipes = document.querySelector('.favorites-btn');
-const filterCookbook = document.querySelector('.cookbook-btn');
+const navBtns = document.querySelector('.header-btns');
 const mainSearchInput = document.querySelector('.search-all');
 const recipeTagContainer = document.querySelector('.tag-container');
 // const displayRecipeCard = document.querySelector('.display-recipe');
 // const ingredientsList = document.querySelector('.ingredients-list');
 const playBTN = document.getElementById('play')
 
+navBtns.addEventListener("click", function() {
+  displayFavRecipes(event);
+  displayCookbookRecipes(event);
+});
 mainSearchInput.addEventListener('input', searchRecipes);
 recipeTagContainer.addEventListener('click', filterByTag)
 populatePage.addEventListener('click', function() {
@@ -134,7 +137,7 @@ function recipeDisplay(recipe) {
 function checkRecipe(event) {
   let ingredientsList = document.querySelector(".ingredients-list");
   let instructionList = document.querySelector(".instruction-list");
-  let currentPantry = user.createPantry()
+  let currentPantry = user.createPantry();
   if (event.target.classList.contains('play-img')) {
     ingredientsList.innerHTML = "";
     instructionList.innerHTML = "";
@@ -228,18 +231,46 @@ function filterByTag(event) {
   let currentTag = event.target
   let tagId = event.target.id
   if (currentTag.classList.contains('tag-img')) {
-    displayRecipesByTag(tagId, currentTag);
+    displayRecipesByTag(tagId);
   }
 }
 
-function displayRecipesByTag(tagId, currentTag) {
+function displayRecipesByTag(tagId) {
   let allCards = document.querySelectorAll('.recipe-card');
   allCards.forEach(card => card.classList.remove('hidden'));
 
   recipeData.forEach(recipe => {
     let currentRecipe = document.querySelector(`.recipe-card[data-id="${recipe.id}"]`)
-    if(!recipe.tags.includes(tagId)) {
+    if (!recipe.tags.includes(tagId)) {
       currentRecipe.classList.add('hidden');
     }
   });
+}
+
+function displayFavRecipes(event) {
+  if (event.target.classList.contains("favorites-btn")) {
+    let allRecipes = document.querySelectorAll(".recipe-card")
+    allRecipes.forEach(recipe => recipe.classList.remove('hidden'));
+    recipeData.forEach(recipe => {
+      let currentRecipe = document.querySelector(`.recipe-card[data-id="${recipe.id}"]`);
+      let isFavorite = user.favRecipes.find(dish => dish.id === recipe.id);
+      if (!isFavorite) {
+        currentRecipe.classList.add('hidden')
+      }
+    });
+  };
+}
+
+function displayCookbookRecipes(event) {
+  if (event.target.classList.contains("cookbook-btn")) {
+    let allRecipes = document.querySelectorAll(".recipe-card")
+    allRecipes.forEach(recipe => recipe.classList.remove('hidden'));
+    recipeData.forEach(recipe => {
+      let currentRecipe = document.querySelector(`.recipe-card[data-id="${recipe.id}"]`);
+      let isInCookbook = user.cookBook.find(dish => dish.id === recipe.id);
+      if (!isInCookbook) {
+        currentRecipe.classList.add('hidden');
+      }
+    });
+  };
 }
