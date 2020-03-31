@@ -1,5 +1,5 @@
 // const data = require('../data/ingredients');
-// const allIngredients = ingredientsData;
+// const allIngredients = data.ingredientsData;
 
 class Recipe {
   constructor(dish) {

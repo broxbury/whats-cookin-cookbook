@@ -1,4 +1,6 @@
-// let Pantry = require('../src/Pantry');
+if (typeof module !== 'undefined') {
+  ingredientsData = require('../data/ingredients');
+}
 
 class User {
   constructor(person) {
@@ -15,9 +17,10 @@ class User {
   }
 
   addFavRecipe(recipe) {
-    if (!this.favRecipes.includes(recipe)) {
+    if(!this.favRecipes.includes(recipe)) {
       this.favRecipes.push(recipe);
     }
+    return this.favRecipes
   }
 
   removeFavRecipe(recipe) {
@@ -26,7 +29,7 @@ class User {
   }
 
   addToCookBook(recipe) {
-    if (!this.cookBook.includes(recipe)) {
+    if(!this.cookBook.includes(recipe)) {
       this.cookBook.push(recipe);
     }
   }

@@ -6,13 +6,13 @@ const recipeTagContainer = document.querySelector('.tag-container');
 // const ingredientsList = document.querySelector('.ingredients-list');
 const playBTN = document.getElementById('play')
 
-navBtns.addEventListener("click", function () {
+navBtns.addEventListener("click", function() {
   displayFavRecipes(event);
   displayCookbookRecipes(event);
 });
 mainSearchInput.addEventListener('input', searchRecipes);
 recipeTagContainer.addEventListener('click', filterByTag)
-populatePage.addEventListener('click', function () {
+populatePage.addEventListener('click', function() {
   createRecipe(event)
   checkRecipe(event)
   favoriteRecipeHandler(event)
@@ -23,7 +23,7 @@ let user;
 let currentRecipe;
 let recipes = [];
 
-window.onload = function () {
+window.onload = function() {
   populateRecipes();
   randomizeUser();
 }
@@ -137,7 +137,7 @@ function recipeDisplay(recipe) {
 function checkRecipe(event) {
   let ingredientsList = document.querySelector(".ingredients-list");
   let instructionList = document.querySelector(".instruction-list");
-  let currentPantry = user.createPantry()
+  let currentPantry = user.createPantry();
   if (event.target.classList.contains('play-img')) {
     ingredientsList.innerHTML = "";
     instructionList.innerHTML = "";
@@ -248,31 +248,29 @@ function displayRecipesByTag(tagId) {
 }
 
 function displayFavRecipes(event) {
-  let allRecipes = document.querySelectorAll(".recipe-card")
-  allRecipes.forEach(recipe => recipe.classList.remove('hidden'));
-
   if (event.target.classList.contains("favorites-btn")) {
-    recipeData.forEach((recipe) => {
-      user.favRecipes.forEach(favRecipe => {
-        let currentRecipe = document.querySelector(`.recipe-card[data-id="${recipe.id}"]`)
-        if (favRecipe === recipe) {
-          currentRecipe.classList.add('hidden')
-        }
-      })
-      // let currentRecipe = document.querySelector(`.recipe-card[data-id="${recipe.id}"]`)
-      // let isFavorite = user.favRecipes.find(dish => dish.id === recipe.id)
+    let allRecipes = document.querySelectorAll(".recipe-card")
+    allRecipes.forEach(recipe => recipe.classList.remove('hidden'));
+    recipeData.forEach(recipe => {
+      let currentRecipe = document.querySelector(`.recipe-card[data-id="${recipe.id}"]`);
+      let isFavorite = user.favRecipes.find(dish => dish.id === recipe.id);
+      if (!isFavorite) {
+        currentRecipe.classList.add('hidden')
+      }
     });
-  }
+  };
 }
 
 function displayCookbookRecipes(event) {
-  let allRecipes = document.querySelectorAll(".recipe-card")
-  allRecipes.forEach(recipe => recipe.classList.add('hidden'));
-
   if (event.target.classList.contains("cookbook-btn")) {
-    user.cookBook.forEach((recipe) => {
-      let currentRecipe = document.querySelector(`.recipe-card[data-id="${recipe.id}"]`)
-      currentRecipe.classList.remove('hidden')
+    let allRecipes = document.querySelectorAll(".recipe-card")
+    allRecipes.forEach(recipe => recipe.classList.remove('hidden'));
+    recipeData.forEach(recipe => {
+      let currentRecipe = document.querySelector(`.recipe-card[data-id="${recipe.id}"]`);
+      let isInCookbook = user.cookBook.find(dish => dish.id === recipe.id);
+      if (!isInCookbook) {
+        currentRecipe.classList.add('hidden');
+      }
     });
-  }
+  };
 }
