@@ -1,6 +1,7 @@
-// if (typeof module !== 'undefined') {
-//   ingredientsData = require('../data/ingredients');
-// }
+if (typeof module !== 'undefined') {
+  data = require('../data/ingredients');
+  ingredientsData = data.ingredientsData;
+}
 
 class Pantry {
   constructor(user) {

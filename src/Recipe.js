@@ -1,4 +1,7 @@
-// const data = require('../data/ingredients');
+if (typeof module !== 'undefined') {
+  data = require('../data/ingredients');
+  ingredientsData = data.ingredientsData;
+}
 // const allIngredients = data.ingredientsData;
 
 class Recipe {
