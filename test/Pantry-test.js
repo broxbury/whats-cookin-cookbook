@@ -5,11 +5,6 @@ const User = require('../src/User');
 const Recipe = require('../src/Recipe');
 const Pantry = require('../src/Pantry')
 
-  // if (typeof module !== 'undefined') {
-  //   data = require('../data/ingredients');
-  // }
-  // const allIngredients = data.ingredientsData;
-
 describe('Pantry', function () {
 
   let user;
