@@ -31,14 +31,11 @@ class Recipe {
         if (ingredient.id === item.id && !isInArray) {
           ingredient['name'] = item.name;
           ingredient['totalCostOfIngredient'] = item.estimatedCostInCents * ingredient.quantity.amount;
-          ingredient['unit'] = ingredient.quantity.unit;
-          ingredient['amount'] = ingredient.quantity.amount;
           acc.push(ingredient);
         };
       });
       return acc;
     }, []);
-    console.log(ingredientsObjs);
     return ingredientsObjs;
   }
 
