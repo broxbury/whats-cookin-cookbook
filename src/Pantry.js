@@ -32,7 +32,7 @@ class Pantry {
     let hasIngredients =
       this.checkUserHasIngredients(recipeNames, pantryIngredientNames)
     if (hasIngredients === false) {
-      let missingGroceryList1 = this.missingGroceryItems(recipeNames, pantryIngredientNames, recipe);
+      let missingGroceryList1 = this.missingGroceryItems(recipeNames, pantryIngredientNames, recipe)
       let missingGroceryList2 = this.checkCurrentIngredients(recipeNames, pantryIngredientNames, recipe)
       let finalGroceryList = this.combineGroceryLists(missingGroceryList1, missingGroceryList2);
       return finalGroceryList

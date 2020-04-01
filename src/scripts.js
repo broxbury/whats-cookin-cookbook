@@ -3,8 +3,6 @@ const navBtns = document.querySelector('.header-btns');
 const mainSearchInput = document.querySelector('.search-all');
 const recipeTagContainer = document.querySelector('.tag-container');
 
-const playBTN = document.getElementById('play')
-
 navBtns.addEventListener("click", function () {
   displayFavRecipes(event);
   displayCookbookRecipes(event);
@@ -37,8 +35,10 @@ function populateRecipes() {
           <h2 class="recipe-title">${recipe.name}</h2>
         </section>
         <section class="btn-container">
-          <img class="recipe-card-images heart-img" data-id="${recipe.id}" src='../assets/heart-circle-outline.svg'>
-          <img class="recipe-card-images book-img" data-id="${recipe.id}" src='../assets/book-outline.svg'>
+          <img class="recipe-card-images heart-img" data-id="${recipe.id}"
+            src='../assets/heart-circle-outline.svg'>
+          <img class="recipe-card-images book-img" data-id="${recipe.id}"
+            src='../assets/book-outline.svg'>
         </section>
       </section>
     </section>`
