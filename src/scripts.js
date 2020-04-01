@@ -6,13 +6,13 @@ const recipeTagContainer = document.querySelector('.tag-container');
 // const ingredientsList = document.querySelector('.ingredients-list');
 const playBTN = document.getElementById('play')
 
-navBtns.addEventListener("click", function() {
+navBtns.addEventListener("click", function () {
   displayFavRecipes(event);
   displayCookbookRecipes(event);
 });
 mainSearchInput.addEventListener('input', searchRecipes);
 recipeTagContainer.addEventListener('click', filterByTag)
-populatePage.addEventListener('click', function() {
+populatePage.addEventListener('click', function () {
   createRecipe(event)
   checkRecipe(event)
   favoriteRecipeHandler(event)
@@ -23,7 +23,7 @@ let user;
 let currentRecipe;
 let recipes = [];
 
-window.onload = function() {
+window.onload = function () {
   populateRecipes();
   randomizeUser();
 }
@@ -172,16 +172,15 @@ function closeWindow() {
 function favoriteRecipeHandler(event) {
   let currentId = event.target.dataset.id
   let currentRecipe = recipeData.find(recipe => recipe.id == currentId);
-  // console.log(currentRecipe)
+
   if (event.target.classList.contains("heart-img")) {
     if (user.favRecipes.includes(currentRecipe)) {
       user.removeFavRecipe(currentRecipe)
       deactiveFavImg(currentId)
-      // console.log("remove", user.favRecipes)
     } else {
       user.addFavRecipe(currentRecipe)
       activeFavImg(currentId)
-      // console.log("add", user.favRecipes)
+
     }
   }
 }
@@ -201,16 +200,13 @@ function deactiveFavImg(currentId) {
 function cookBookHandler(event) {
   let currentId = event.target.dataset.id
   let currentRecipe = recipeData.find(recipe => recipe.id == currentId);
-  // console.log(currentRecipe)
   if (event.target.classList.contains("book-img")) {
     if (user.cookBook.includes(currentRecipe)) {
       user.removeFromCookBook(currentRecipe)
       deactiveBookImg(currentId)
-      // console.log("remove", user.favRecipes)
     } else {
       user.addToCookBook(currentRecipe)
       activeBookImg(currentId)
-      // console.log("add", user.favRecipes)
     }
   }
 }

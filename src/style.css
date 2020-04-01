@@ -65,12 +65,12 @@ header {
 }
 
 .tag-img {
-    border: 3px solid lightgrey;
-    border-radius: 50%;
-    height: 6em;
-    width: 6em;
-    margin-top: 5%;
-    box-shadow: 2px 2px 2px 2px grey;
+  border: 3px solid lightgrey;
+  border-radius: 50%;
+  height: 6em;
+  width: 6em;
+  margin-top: 5%;
+  box-shadow: 2px 2px 2px 2px grey;
 }
 
 .tag-img:hover {
@@ -119,12 +119,12 @@ header {
 
 .recipe-card {
   border: 2px solid grey;
-  box-shadow: 1px 1px 1px 1px rgba(245,255,250,.7);
+  box-shadow: 1px 1px 1px 1px rgba(245, 255, 250, .7);
   position: relative;
   display: inline-block;
   width: 65%;
   margin: 10% 10% 10% 20%;
-  background:rgb(245,255,250);
+  background: rgb(245, 255, 250);
   border-radius: 3px;
   z-index: 1;
 }
@@ -145,19 +145,19 @@ header {
 }
 
 .display-recipe {
-    position: fixed;
-    top: 30px;
-    left: 10%;
-    height: auto;
-    width: 80%;
-    z-index: 123;
-    border: 2px solid grey;
-    background-color: rgb(245,255,250);
-    box-shadow: 1px 1px 1px 1px rgba(245,255,250,.7);
-    top: 10%;
-    bottom: 10%;
-    overflow-y: scroll;
-    overflow-x: hidden;
+  position: fixed;
+  top: 30px;
+  left: 10%;
+  height: auto;
+  width: 80%;
+  z-index: 123;
+  border: 2px solid grey;
+  background-color: rgb(245, 255, 250);
+  box-shadow: 1px 1px 1px 1px rgba(245, 255, 250, .7);
+  top: 10%;
+  bottom: 10%;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 #recipe-img-large {
@@ -175,7 +175,7 @@ header {
 }
 
 .close-icon {
-  margin:2% 0 0 95%;
+  margin: 2% 0 0 95%;
   display: block;
   font-size: 3em;
 }
@@ -197,16 +197,18 @@ header {
 }
 
 .ingredients-list {
-margin: 1rem;
+  margin: 1rem;
 }
 
-.bottom-row{
+.bottom-row {
   display: flex;
 }
+
 ul {
   style: none;
   padding: 0;
 }
+
 li {
   padding-top: 1rem;
   font-size: 1.5em;

@@ -180,7 +180,6 @@ describe('Pantry', function () {
       ]
     })
     pantry = user.createPantry();
-
   });
 
   it("Should be an instance of Pantry", function () {

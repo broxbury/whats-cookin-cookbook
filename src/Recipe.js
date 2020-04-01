@@ -1,8 +1,7 @@
 if (typeof module !== 'undefined') {
-   data = require('../data/ingredients');
-   ingredientsData = data.ingredientsData;
+  data = require('../data/ingredients');
+  ingredientsData = data.ingredientsData;
 }
-
 
 class Recipe {
   constructor(dish) {
@@ -27,18 +26,16 @@ class Recipe {
   addProperties(ingredients) {
     let ingredientsObjs = ingredients.reduce((acc, ingredient) => {
       ingredientsData.forEach(item => {
-      let isInArray = acc.find(ingredient => ingredient['name'] === item.name);
+        let isInArray = acc.find(ingredient => ingredient['name'] === item.name);
         if (ingredient.id === item.id && !isInArray) {
           ingredient['name'] = item.name;
           ingredient['totalCostOfIngredient'] = item.estimatedCostInCents * ingredient.quantity.amount;
-          ingredient['unit'] = ingredient.quantity.unit;
-          ingredient['amount'] = ingredient.quantity.amount;
           acc.push(ingredient);
         };
       });
       return acc;
     }, []);
-    console.log(ingredientsObjs);
+
     return ingredientsObjs;
   }
 
