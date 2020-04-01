@@ -101,9 +101,6 @@ function createRecipe(event) {
       recipeDisplay(isActive)
     }
   }
-  //instantiates Recipe recipeCard
-  //invokes recipeDisplay with recipe info
-
 }
 
 function recipeDisplay(recipe) {
@@ -119,7 +116,7 @@ function recipeDisplay(recipe) {
   recipe.ingredients.forEach(ingredient => {
     let currentIngredientName = ingredient.name
     ingredientsList.innerHTML += `
-    <li>${currentIngredientName}: ${ingredient.amount} ${ingredient.unit}</li>
+    <li>${currentIngredientName}: ${ingredient.quantity.amount} ${ingredient.quantity.unit}</li>
     `
   });
 
