@@ -1,24 +1,33 @@
 body {
-  background-color: rgb(245, 245, 245);
   margin: 0;
+  background-color: rgb(245, 245, 245);
 }
 
 header {
+  border-bottom: 4px solid black;
   background-image: url("../assets/header2.jpg");
   background-position-x: center;
   background-size: cover;
-  border-bottom: 4px solid black;
-  height: 100vh;
   width: 100%;
+  height: 100vh;
 }
 
-.search-all,
-.filter-btn {
-  border: 2px solid lightgrey;
-  box-shadow: 1px 1px 1px 1px lightgrey;
-  font-size: larger;
+.search-all {
   margin: 0.5rem;
+  box-shadow: 1px 1px 1px 1px lightgrey;
+  border: 2px solid lightgrey;
   width: 15%;
+  height: 2rem;
+  font-size: larger;
+}
+
+.filter-btn {
+  margin: 0.5rem;
+  box-shadow: 1px 1px 1px 1px lightgrey;
+  border: 2px solid lightgrey;
+  width: 15%;
+  height: 2.4rem;
+  font-size: larger;
 }
 
 .filter-btn,
@@ -27,30 +36,30 @@ header {
 }
 
 .header-title {
+  margin: 0;
+  width: 100%;
+  height: 1.3em;
   font-family: cursive;
   font-size: 10em;
   font-weight: lighter;
-  height: 1.3em;
-  margin: 0;
   text-align: center;
-  width: 100%;
 }
 
 .header-btns {
   display: inline-flex;
-  height: 7vh;
   justify-content: center;
   margin-top: 2%;
   width: 100%;
+  height: 7vh;
 }
 
 .main-page {
+  margin: 0;
   background-attachment: fixed;
   background-image: url('../assets/tomato.jpg');
   background-position-x: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin: 0;
 }
 
 
@@ -58,39 +67,39 @@ header {
   display: inline-flex;
   flex-direction: row;
   flex-wrap: wrap;
-  height: 20vh;
   justify-content: space-between;
   margin: 2% 3% 0 3%;
   width: 94%;
+  height: 20vh;
 }
 
 .tag-img {
-  border-radius: 50%;
-  border: 3px solid lightgrey;
-  box-shadow: 2px 2px 2px 2px grey;
-  height: 6em;
   margin-top: 5%;
+  box-shadow: 2px 2px 2px 2px grey;
+  border: 3px solid lightgrey;
+  border-radius: 50%;
   width: 6em;
+  height: 6em;
 }
 
 .tag-img:hover {
-  border-radius: 50%;
-  border: 3px solid lightgrey;
-  box-shadow: 2px 2px 2px 2px grey;
-  cursor: grab;
-  height: 6.6em;
-  margin-top: 5%;
   opacity: 85%;
+  cursor: grab;
+  margin-top: 5%;
+  box-shadow: 2px 2px 2px 2px grey;
+  border: 3px solid lightgrey;
+  border-radius: 50%;
   width: 6.6em;
+  height: 6.6em;
 }
 
 .tag-txt {
+  position: relative;
+  left: 10%;
+  margin: 0;
   color: black;
   font-size: larger;
   font-weight: bold;
-  left: 10%;
-  margin: 0;
-  position: relative;
 }
 
 .recipe-img {
@@ -100,33 +109,33 @@ header {
 }
 
 .recipe-img:hover {
-  border-radius: 3px;
-  cursor: grab;
   opacity: 80%;
+  cursor: grab;
+  border-radius: 3px;
 }
 
 .populate-recipes {
-  column-count: 3;
   column-gap: 2em;
+  column-count: 3;
 }
 
 .recipe-title {
   display: flex;
-  font-size: 2.2rem;
   justify-content: center;
+  font-size: 2.2rem;
   text-align: center;
 }
 
 .recipe-card {
-  background: rgb(245, 255, 250);
-  border-radius: 3px;
-  border: 2px solid grey;
-  box-shadow: 1px 1px 1px 1px rgba(245, 255, 250, .7);
   display: inline-block;
-  margin: 10% 10% 10% 20%;
   position: relative;
-  width: 65%;
   z-index: 1;
+  margin: 10% 10% 10% 20%;
+  box-shadow: 1px 1px 1px 1px rgba(245, 255, 250, .7);
+  border: 2px solid grey;
+  border-radius: 3px;
+  background: rgb(245, 255, 250);
+  width: 65%;
 }
 
 .recipe-card-info {
@@ -145,39 +154,40 @@ header {
 }
 
 .display-recipe {
-  background-color: rgb(245, 255, 250);
-  border: 2px solid grey;
-  bottom: 10%;
-  box-shadow: 1px 1px 1px 1px rgba(245, 255, 250, .7);
-  height: auto;
-  left: 10%;
-  overflow-x: hidden;
-  overflow-y: scroll;
   position: fixed;
   top: 10%;
   top: 30px;
-  width: 80%;
+  bottom: 10%;
+  left: 10%;
   z-index: 123;
+  box-shadow: 1px 1px 1px 1px rgba(245, 255, 250, .7);
+  border: 2px solid grey;
+  background-color: rgb(245, 255, 250);
+  width: 80%;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 #recipe-img-large {
-  margin-left: 2em;
   margin-top: 3em;
+  margin-left: 2em;
+  width: 90%;
 }
 
 #recipe-title {
   display: flex;
+  justify-content: center;
+  margin: 0;
   font-family: cursive;
   font-size: 400%;
   font-weight: normal;
-  justify-content: center;
-  margin: 0;
 }
 
 .close-icon {
   display: block;
-  font-size: 3em;
   margin: 2% 0 0 95%;
+  font-size: 3em;
 }
 
 .hidden {
@@ -185,14 +195,14 @@ header {
 }
 
 .recipe-ingredients {
-  margin: 1rem 2em 2em 5em;
   display: block;
+  margin: 1rem 2em 2em 5em;
   width: 30%;
 }
 
 .recipe-instructions {
-  margin: 1rem 2em 2em 5em;
   display: block;
+  margin: 1rem 2em 2em 5em;
   width: 30%;
 }
 
