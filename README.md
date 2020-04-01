@@ -20,9 +20,6 @@ pre-existing Recipes. While browsing, we wanted the user to be able to add a fav
 recipe choices. As well as add a recipe to the users personal cookbook. Lastly if the user wanted to make the recipe.
 The user should be able to verify that the user has enough ingredients to make that recipe.
 
-
-![Screen-Recording-2020-04-01-at-3 (1)](https://user-images.githubusercontent.com/58377277/78191829-1359e000-7434-11ea-8b9a-2a1c967dac4e.gif)
-
 ## Details...
 The details of this project are outlined in the <a href="https://frontend.turing.io/projects/whats-cookin.html"
   target="\__blank">project spec</a>.
