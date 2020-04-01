@@ -29,7 +29,7 @@ class Recipe {
         let isInArray = acc.find(ingredient => ingredient['name'] === item.name);
         if (ingredient.id === item.id && !isInArray) {
           ingredient['name'] = item.name;
-          ingredient['totalCostOfIngredient'] = item.estimatedCostInCents * ingredient.quantity.amount;
+          ingredient['totalCostOfIngredient'] = item.estimatedCostInCents * ingredient.quantity.amount
           acc.push(ingredient);
         }
       })
