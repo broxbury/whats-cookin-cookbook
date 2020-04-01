@@ -3,9 +3,6 @@ if (typeof module !== 'undefined') {
   ingredientsData = data.ingredientsData;
   Pantry = require('../src/Pantry');
 }
-// const allIngredients = data.ingredientsData;
-// const Pantry = require('../src/Pantry')
-
 
 class User {
   constructor(person) {
@@ -44,7 +41,6 @@ class User {
     this.cookBook.splice(deleteRecipe, 1);
   }
 }
-
 if (typeof module !== 'undefined') {
   module.exports = User;
 }
