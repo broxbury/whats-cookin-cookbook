@@ -14,6 +14,8 @@
 A JavaScript based project, that utilizes pre-existing dataSets to allow a user to check the ingredients that
 they have VS what a recipe of their choice calls for.
 
+![Screen-Recording-2020-04-01-at-4 (2)](https://user-images.githubusercontent.com/58377277/78193551-08a14a00-7438-11ea-99ab-4115bb7a5acc.gif)
+
 ## Why?
 For this specific APP. We wanted a user who has access to the APP, to be able to browse through
 pre-existing Recipes. While browsing, we wanted the user to be able to add a favorite recipe to the users favorite
