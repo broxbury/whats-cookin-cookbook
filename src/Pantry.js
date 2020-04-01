@@ -67,7 +67,7 @@ class Pantry {
   }
   // -END-- Secondary MethodHandlers --END- //
 
-  // -START-- These are the function declorations for MethodHandler 1 --START- //
+  // -START-- These are the function declorations for MethodHandlers --START- //
   findRecipeNames(recipe) {
     let recipeName = recipe.ingredients.map(ingredient => {
       return ingredient.name

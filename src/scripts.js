@@ -2,17 +2,16 @@ const populatePage = document.querySelector('.populate-recipes');
 const navBtns = document.querySelector('.header-btns');
 const mainSearchInput = document.querySelector('.search-all');
 const recipeTagContainer = document.querySelector('.tag-container');
-// const displayRecipeCard = document.querySelector('.display-recipe');
-// const ingredientsList = document.querySelector('.ingredients-list');
+
 const playBTN = document.getElementById('play')
 
-navBtns.addEventListener("click", function() {
+navBtns.addEventListener("click", function () {
   displayFavRecipes(event);
   displayCookbookRecipes(event);
 });
 mainSearchInput.addEventListener('input', searchRecipes);
 recipeTagContainer.addEventListener('click', filterByTag)
-populatePage.addEventListener('click', function() {
+populatePage.addEventListener('click', function () {
   createRecipe(event)
   checkRecipe(event)
   favoriteRecipeHandler(event)
@@ -23,7 +22,7 @@ let user;
 let currentRecipe;
 let recipes = [];
 
-window.onload = function() {
+window.onload = function () {
   populateRecipes();
   randomizeUser();
 }
@@ -45,15 +44,6 @@ function populateRecipes() {
     </section>`
   });
 }
-
-// function populateRecipesArray() {
-//   recipeData.forEach(recipe => {
-//     if (!recipes.includes(recipe)) {
-//       recipes.push(recipe);
-//     }
-//   });
-// }
-
 
 function randomizeUser() {
   let randomIndex = Math.floor(Math.random() * usersData.length);
@@ -92,7 +82,6 @@ function createRecipe(event) {
   if (event.target.classList.contains('recipe-img')) {
     currentRecipe = recipeData.find(recipe => recipe.id == currentRecipeId);
     let isActive = recipes.find(recipe => recipe.id == currentRecipeId);
-
     if (!isActive) {
       let recipe = new Recipe(currentRecipe);
       recipes.push(recipe)
@@ -169,16 +158,13 @@ function closeWindow() {
 function favoriteRecipeHandler(event) {
   let currentId = event.target.dataset.id
   let currentRecipe = recipeData.find(recipe => recipe.id == currentId);
-  // console.log(currentRecipe)
   if (event.target.classList.contains("heart-img")) {
     if (user.favRecipes.includes(currentRecipe)) {
       user.removeFavRecipe(currentRecipe)
       deactiveFavImg(currentId)
-      // console.log("remove", user.favRecipes)
     } else {
       user.addFavRecipe(currentRecipe)
       activeFavImg(currentId)
-      // console.log("add", user.favRecipes)
     }
   }
 }
@@ -198,16 +184,13 @@ function deactiveFavImg(currentId) {
 function cookBookHandler(event) {
   let currentId = event.target.dataset.id
   let currentRecipe = recipeData.find(recipe => recipe.id == currentId);
-  // console.log(currentRecipe)
   if (event.target.classList.contains("book-img")) {
     if (user.cookBook.includes(currentRecipe)) {
       user.removeFromCookBook(currentRecipe)
       deactiveBookImg(currentId)
-      // console.log("remove", user.favRecipes)
     } else {
       user.addToCookBook(currentRecipe)
       activeBookImg(currentId)
-      // console.log("add", user.favRecipes)
     }
   }
 }
@@ -255,7 +238,7 @@ function displayFavRecipes(event) {
         currentRecipe.classList.add('hidden')
       }
     });
-  };
+  }
 }
 
 function displayCookbookRecipes(event) {
@@ -269,5 +252,5 @@ function displayCookbookRecipes(event) {
         currentRecipe.classList.add('hidden');
       }
     });
-  };
+  }
 }
