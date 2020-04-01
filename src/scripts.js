@@ -2,12 +2,12 @@ const populatePage = document.querySelector('.populate-recipes');
 const navBtns = document.querySelector('.header-btns');
 const mainSearchInput = document.querySelector('.search-all');
 const recipeTagContainer = document.querySelector('.tag-container');
-
 const playBTN = document.getElementById('play')
 
 navBtns.addEventListener("click", function () {
   displayFavRecipes(event);
   displayCookbookRecipes(event);
+  displayAll(event);
 });
 mainSearchInput.addEventListener('input', searchRecipes);
 recipeTagContainer.addEventListener('click', filterByTag)
@@ -252,5 +252,12 @@ function displayCookbookRecipes(event) {
         currentRecipe.classList.add('hidden');
       }
     });
+  }
+}
+
+function displayAll(event) {
+  if (event.target.classList.contains('all-btn')) {
+    let selectAll = document.querySelectorAll('.recipe-card');
+    selectAll.forEach(recipe => recipe.classList.remove('hidden'))
   }
 }
